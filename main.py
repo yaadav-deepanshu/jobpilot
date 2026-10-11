@@ -19,13 +19,16 @@ from scraper.multi_platform import Mark2JobScraper
 from filter.engine import Mark2FilterEngine
 from notifier.email_sender import EmailNotifier
 
+# Ensure data directory exists
+os.makedirs("data", exist_ok=True)
+
 # Setup rich console logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler("jobpilot_mark2.log", encoding="utf-8")
+        logging.FileHandler(os.path.join("data", "jobpilot_mark2.log"), encoding="utf-8")
     ]
 )
 logger = logging.getLogger("JobPilotMark2")

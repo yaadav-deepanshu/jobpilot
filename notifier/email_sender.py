@@ -175,7 +175,7 @@ class EmailNotifier:
         self,
         jobs: List[Dict[str, Any]],
         window_minutes: int = 30,
-        save_preview_path: Optional[str] = "latest_email_preview.html"
+        save_preview_path: Optional[str] = "data/latest_email_preview.html"
     ) -> bool:
         """
         Builds and sends the digest email using the user's smtplib.SMTP_SSL pattern.
@@ -186,7 +186,9 @@ class EmailNotifier:
         # Always save latest HTML preview locally so user can inspect it
         if save_preview_path:
             try:
-                Path(save_preview_path).write_text(rendered_html, encoding='utf-8')
+                p = Path(save_preview_path)
+                p.parent.mkdir(parents=True, exist_ok=True)
+                p.write_text(rendered_html, encoding='utf-8')
                 logger.info(f"💾 Saved latest email preview to {save_preview_path}")
             except Exception as e:
                 logger.warning(f"Could not save email preview: {e}")
