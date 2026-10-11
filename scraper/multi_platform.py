@@ -47,10 +47,10 @@ class Mark2JobScraper:
         enabled_platforms = self._get_enabled_platforms()
         window_minutes = minutes_old if minutes_old is not None else self.recency_minutes
 
-        # Calculate hours_old for JobSpy (e.g. 30 mins -> 0.5 or 1 hour conservative query)
-        hours_for_jobspy = max(round(window_minutes / 60.0, 1), 0.5)
+        # Calculate hours_old for JobSpy (JobSpy requires a strict integer >= 1)
+        hours_for_jobspy = max(1, math.ceil(window_minutes / 60.0))
 
-        logger.info(f"🚀 Starting 30-minute scrape across {len(enabled_platforms)} platforms (window: {window_minutes}m, hours: {hours_for_jobspy}h)")
+        logger.info(f"🚀 Starting scrape across {len(enabled_platforms)} platforms (window: {window_minutes}m, JobSpy query: {hours_for_jobspy}h)")
 
         # Query top roles to balance depth and request speed
         search_roles = self.roles[:4]
