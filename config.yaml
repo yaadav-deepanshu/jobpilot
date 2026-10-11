@@ -1,0 +1,80 @@
+# JobPilot Mark 2 Configuration
+# Headless Autonomous Job Finder & Email Digest Daemon
+
+profile:
+  name: "Deepanshu Yadav"
+  email: "yaadav.deepanshu@gmail.com"
+  experience_years: 3
+  target_experience_max: 4
+
+search:
+  roles:
+    - "Cloud Engineer"
+    - "DevOps Engineer"
+    - "Site Reliability Engineer"
+    - "SRE"
+    - "Platform Engineer"
+    - "Systems Engineer"
+    - "Infrastructure Engineer"
+
+  location: "Bengaluru"
+  remote: true
+  hybrid: true
+
+  # Strict Filtering Limits
+  recency_minutes: 30        # Default threshold: 30 minutes
+  max_applicants: 100        # Strict max applicants
+  min_experience_years: 0
+  max_experience_years: 4    # Strict 0-4 years cap
+
+  exclude_keywords:
+    - "internship"
+    - "volunteer"
+    - "unpaid"
+    - "part-time"
+    - "senior"
+    - "sr."
+    - "sr "
+    - "lead"
+    - "principal"
+    - "staff"
+    - "architect"
+    - "director"
+    - "manager"
+    - "head of"
+    - "vp"
+    - "vice president"
+
+platforms:
+  linkedin:
+    enabled: true
+  indeed:
+    enabled: true
+    country: "india"
+  naukri:
+    enabled: true
+  glassdoor:
+    enabled: true
+  zip_recruiter:
+    enabled: true
+  google:
+    enabled: true
+  bayt:
+    enabled: true
+
+email:
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 465
+  sender_email: "${GMAIL_USER}"
+  sender_password: "${GMAIL_APP_PASSWORD}"
+  recipient_email: "${RECIPIENT_EMAIL}"
+  subject_prefix: "[JobPilot Alert]"
+  send_empty_digest: false   # Only send emails when new matching jobs are discovered
+
+scheduler:
+  enabled: true
+  interval_minutes: 30       # Runs every 30 minutes
+  timezone: "Asia/Kolkata"
+
+database:
+  path: "data/jobs.db"

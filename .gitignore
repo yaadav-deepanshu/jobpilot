@@ -1,0 +1,28 @@
+# Environment & Secrets (NEVER COMMIT)
+.env
+.env.local
+*.pem
+*.key
+
+# SQLite Database & Data
+data/
+*.db
+*.sqlite3
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs & Output
+*.log
+latest_email_preview.html
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  jobpilot-mark2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jobpilot-mark2
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Persistent SQLite database storage across container restarts
+      - ./data:/app/data
+      # Log file output mapped to host
+      - ./jobpilot_mark2.log:/app/jobpilot_mark2.log
+      # Latest email preview accessible on host
+      - ./latest_email_preview.html:/app/latest_email_preview.html
+    environment:
+      - TZ=Asia/Kolkata
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

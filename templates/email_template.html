@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobPilot Mark 2 Alert</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0b0f19;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #e2e8f0;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      background-color: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+      padding: 28px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: left;
+    }
+    .brand-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 4px 0;
+      letter-spacing: -0.5px;
+    }
+    .brand-subtitle {
+      font-size: 13px;
+      color: #c7d2fe;
+      margin: 0 0 14px 0;
+    }
+    .badge-recency {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.25);
+      border: 1px solid #818cf8;
+      color: #e0e7ff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .content {
+      padding: 24px;
+    }
+    .stats-container {
+      background-color: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    .stats-header {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+    .stats-grid {
+      display: table;
+      width: 100%;
+    }
+    .stat-row {
+      display: table-row;
+    }
+    .stat-cell {
+      display: table-cell;
+      padding: 6px 8px;
+      font-size: 13px;
+      color: #cbd5e1;
+    }
+    .stat-highlight {
+      font-weight: 700;
+      color: #38bdf8;
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f8fafc;
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .job-card {
+      background-color: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+    .job-card-header {
+      margin-bottom: 10px;
+    }
+    .job-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 6px 0;
+      text-decoration: none;
+    }
+    .job-meta {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+    .job-company {
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+    .job-location {
+      color: #94a3b8;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      text-transform: uppercase;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+    .badge-linkedin { background-color: #0a66c2; color: #ffffff; }
+    .badge-indeed { background-color: #2164f3; color: #ffffff; }
+    .badge-naukri { background-color: #032b69; color: #60a5fa; border: 1px solid #1d4ed8; }
+    .badge-glassdoor { background-color: #0caa41; color: #ffffff; }
+    .badge-zip_recruiter { background-color: #581c87; color: #c084fc; }
+    .badge-google { background-color: #4285f4; color: #ffffff; }
+    .badge-bayt { background-color: #ea580c; color: #ffffff; }
+    .badge-other { background-color: #475569; color: #e2e8f0; }
+
+    .badge-info {
+      background-color: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+    }
+
+    .btn-apply {
+      display: inline-block;
+      background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .footer {
+      background-color: #090d16;
+      border-top: 1px solid #1e293b;
+      padding: 20px 24px;
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.5;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div class="brand-title">🚀 JobPilot Mark 2</div>
+      <div class="brand-subtitle">Autonomous 30-Minute Job Finder & Alert Engine</div>
+      <span class="badge-recency">⏱️ Window: Last $window_minutes Minutes</span>
+    </div>
+
+    <div class="content">
+      <div class="stats-container">
+        <div class="stats-header">📊 Scan Summary & Counts</div>
+        <div class="stats-grid">
+          <div class="stat-row">
+            <div class="stat-cell"><strong>Total Qualified Jobs:</strong> <span class="stat-highlight">$total_jobs</span></div>
+            <div class="stat-cell"><strong>Candidate:</strong> $name (3y Exp / Max 4y)</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-cell"><strong>Platform Breakdown:</strong> $platform_breakdown</div>
+            <div class="stat-cell"><strong>Location Breakdown:</strong> $location_breakdown</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">
+        <span>🎯 Discovered Opportunities ($total_jobs)</span>
+      </div>
+
+      $jobs_cards_html
+
+    </div>
+
+    <div class="footer">
+      <div>JobPilot Mark 2 Daemon • Executed at $timestamp (IST)</div>
+      <div>Strict Filters: 0-4y Experience Cap • ≤ 100 Applicants • Priority: LinkedIn → Indeed → Naukri → Rest</div>
+    </div>
+  </div>
+</body>
+</html>
